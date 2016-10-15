@@ -1,7 +1,7 @@
 # Collect
+*A collection of query backend interfaces.*
 
 [![Build Status](https://travis-ci.org/davidagold/Collect.jl.svg?branch=master)](https://travis-ci.org/davidagold/Collect.jl)
-
-[![Coverage Status](https://coveralls.io/repos/davidagold/Collect.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/davidagold/Collect.jl?branch=master)
-
 [![codecov.io](http://codecov.io/github/davidagold/Collect.jl/coverage.svg?branch=master)](http://codecov.io/github/davidagold/Collect.jl?branch=master)
+
+This package allows users to collect [queries](https://github.com/davidagold/StructuredQueries.jl) against Julia [`DataFrame`](https://github.com/JuliaStats/DataFrames.jl)s.
