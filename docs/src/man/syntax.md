@@ -1,8 +1,10 @@
-# Syntax Guide
+# Query Syntax
 
-```
-@collect i in src[A > .5] ->
-    i.C = i.A * i.B, \
-    {i.D > .5,} =>
-    res = mapreduce(isnull, |, :E)
-```
+We saw how to conduct basic data manipulation using [`@query`](@ref) in the [Querying and Collection](@ref) section of the [Package Guide](@ref). This page discusses the code structure that the `@query` macro expects.
+
+##
+
+
+
+
+##

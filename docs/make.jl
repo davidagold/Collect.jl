@@ -2,6 +2,7 @@ using Documenter, Collect
 
 makedocs(
     modules = [Collect],
+    format = :html,
     sitename = "Collect.jl",
     authors = "David A. Gold and contributors.",
     pages = Any[
@@ -9,6 +10,7 @@ makedocs(
         "Manual" => Any[
             "Guide" => "man/guide.md",
             "Syntax" => "man/syntax.md",
+            # "Grouped Data" => "man/grouped.md"
             "One-Table Verbs" => "man/verbs1.md",
             "Two-Table Verbs" => "man/verbs2.md",
             "Examples" => "man/examples.md"
