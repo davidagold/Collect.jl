@@ -7,7 +7,8 @@ my_tests = (
     "dataframe/collect/filter.jl",
     "dataframe/collect/groupby.jl",
     "dataframe/collect/summarize.jl",
-    "dataframe/collect/combinations.jl"
+    "dataframe/collect/combinations.jl",
+    "dataframe/grouped/collect/summarize.jl",
 )
 
 println("Running tests:")

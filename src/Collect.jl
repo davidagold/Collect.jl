@@ -4,6 +4,7 @@ using Reexport
 @reexport using StructuredQueries
 const SQ = StructuredQueries
 using AbstractTables
+const AT = AbstractTables
 @reexport using DataFrames
 
 include("tbl/typedef.jl")
