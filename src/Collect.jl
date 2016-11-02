@@ -3,16 +3,23 @@ module Collect
 using Reexport
 @reexport using StructuredQueries
 const SQ = StructuredQueries
-using AbstractTables
-const AT = AbstractTables
+# using AbstractTables
+# const AT = AbstractTables
 @reexport using DataFrames
 
-include("tbl/typedef.jl")
 
-include("tbl/dataframe/interfaces/abstracttable.jl")
-include("tbl/dataframe/interfaces/column_indexable.jl")
-include("tbl/dataframe/interfaces/collect.jl")
+include("Relations/Relations.jl")
+using .Relations
+const Rel = Relations
 
-include("dataframe/collect/collect.jl")
+include("collect/interface.jl")
+include("collect/utils.jl")
+include("collect/collect.jl")
+include("collect/filter.jl")
 
-end # module
+include("dataframe/interfaces/relation.jl")
+include("dataframe/interfaces/collect.jl")
+
+
+
+end
