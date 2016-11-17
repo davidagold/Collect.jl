@@ -1,0 +1,1 @@
+column(X::NullableArray) = X

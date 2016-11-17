@@ -1,22 +1,17 @@
 module Collect
 
 using Reexport
+using Compat
 @reexport using StructuredQueries
 const SQ = StructuredQueries
-# using AbstractTables
-# const AT = AbstractTables
+using DataArrays
+using NullableArrays
 @reexport using DataFrames
+@reexport using Relations
 
 
-include("Relations/Relations.jl")
-using .Relations
-const Rel = Relations
-
-include("collect/interface.jl")
-include("collect/utils.jl")
-include("collect/collect.jl")
-include("collect/filter.jl")
-
+include("dataarray/interfaces/nullablearray.jl")
+include("relation/interfaces/dataframe.jl")
 include("dataframe/interfaces/relation.jl")
 include("dataframe/interfaces/collect.jl")
 

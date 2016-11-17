@@ -9,28 +9,26 @@ B = [4, 5, 6]
 C = ["a", "b", "c"]
 D = [:a, :b, :c]
 
-src = DataFrame(
-    A = NullableArray(A),
-    B = NullableArray(B),
-    C = NullableArray(C),
-    D = NullableArray(D)
-)
-_src = copy(src)
+for T in (Array, NullableArray)
+    r = Relation(A=T(A), B=T(B), C=T(C), D=T(D))
+    global src = DataFrame(r)
+    _src = copy(src)
 
-for (field, col) in AbstractTables.eachcol(Collect.Tbl(src))
-    @eval res = @collect select(src, $field)
+    for (field, col) in zip(src.colindex.names, src.columns)
+        @eval res = @with src select($field)
+        @eval _res = DataFrame($field = $T($col))
+        @show res
+        @show _res
+        @test isequal(src, _src)
+        @test isequal(res, _res)
+    end
+
+    F = A .* B
+    _res1 = DataFrame(F = NullableArray(F))
+    res1 = @with src select(F = A * B)
     @test isequal(src, _src)
-    @test isequal(
-        res,
-        @eval DataFrame($field = $col)
-    )
+    @test isequal(res1, _res1)
 end
-
-F = [ A[i] * B[i] for i in eachindex(A) ]
-_res = DataFrame(F = NullableArray(F))
-res = @collect select(src, F = A * B)
-@test isequal(src, _src)
-@test isequal(res, _res)
 
 # non-standard lifting semantics
 

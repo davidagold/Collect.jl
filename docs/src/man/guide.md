@@ -19,29 +19,5 @@ Pkg.checkout("DataFrames")
 Once you've checked out the DataFrames master branch, you're ready to use Collect.
 
 ```
-julia> using DataFrames
-
 julia> using Collect
 ```
-
-Use `@query` to produce a `Query` against a `DataFrame`
-
-```
-q =
-```
-
-`Query`s can be composed ...
-
-Use `collect` to materialize a `Query` as a `DataFrame`
-
-```
-
-```
-
-Or, just use the `@collect ...` convenience macro (equivalent to `collect(@query ...)`) to query and collect in a single command:
-
-```
-
-```
-
-## Backends

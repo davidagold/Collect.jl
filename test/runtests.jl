@@ -3,12 +3,12 @@ quiet = length(ARGS) > 0 && ARGS[1] == "-q"
 anyerrors = false
 
 my_tests = (
-    "dataframe/collect/select.jl",
-    "dataframe/collect/filter.jl",
-    "dataframe/collect/groupby.jl",
-    "dataframe/collect/summarize.jl",
-    "dataframe/collect/combinations.jl",
-    "dataframe/grouped/collect/summarize.jl",
+    # "dataframe/collect/select.jl",
+    # "dataframe/collect/filter.jl",
+    # "dataframe/collect/groupby.jl",
+    # "dataframe/collect/summarize.jl",
+    # "dataframe/collect/combinations.jl",
+    # "dataframe/grouped/collect/summarize.jl",
 )
 
 println("Running tests:")

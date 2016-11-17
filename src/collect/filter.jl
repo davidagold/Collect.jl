@@ -1,31 +1,18 @@
-using Base: Generator
-
-Base.start{A<:Relation, Q<:SQ.QueryNode}(src::Generator{Tuple{A}, Q}) = start(first(src.iter))
-Base.done{A<:Relation, Q<:SQ.QueryNode}(src::Generator{Tuple{A}, Q}, s) = done(first(src.iter), s)
-
-function Base.next{R<:Relation}(src::Generator{Tuple{R}, SQ.Node{:filter}}, s)
-    rows = first(src.iter)
-    i, s = next(rows, s)
-    v = Nullable(true)
-    # for h in SQ.helpers(src.f)
-    #     p = SQ.parts(h)[1]
-    #     v = SQ.lift(&, v, apply(p, i))
-    #     ifelse(v.hasvalue, v.value, false) || break
-    # end
-    p = SQ.parts(SQ.helpers(src.f)[1])[1]
-    v = apply(p, i)
-    return (v, i), s
+function _collect{R<:Relation}(_src::Tuple{R}, q::SQ.FilterNode)
+    src = first(_src)
+    @time res = similar(src)
+    h = first(SQ.helpers(q))
+    @time grow!(res, src, h)
+    return res
 end
 
-@noinline apply(p, i) = p(i)
-
-function Base.collect{A<:Relation}(src::Generator{Tuple{A}, SQ.Node{:filter}})
-    res = similar(first(src.iter), 0) # src.iter is an Relation
-    attrs_cols = zip(Rel.attributes(res), res.cols)
-    for (v, i) in src
+function grow!{F}(res, src, h::SQ.FilterHelper{F})::Void
+    # TODO: should only need one first here now that you've fixed filter
+    f = first(first(SQ.parts(h)))
+    for i in src
+        v = f(i)
         if ifelse(v.hasvalue, v.value, false)
-            push!(attrs_cols, i)
+            push!(res, i)
         end
     end
-    return res
 end

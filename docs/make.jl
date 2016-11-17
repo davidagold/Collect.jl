@@ -12,7 +12,7 @@ makedocs(
             "Syntax" => "man/syntax.md",
             # "Grouped Data" => "man/grouped.md"
             "One-Table Verbs" => "man/verbs1.md",
-            "Two-Table Verbs" => "man/verbs2.md",
+            # "Two-Table Verbs" => "man/verbs2.md",
             "Examples" => "man/examples.md"
         ],
         "Library" => Any[

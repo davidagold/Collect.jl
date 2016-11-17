@@ -4,7 +4,8 @@
 
 ## Package Abstract
 
-Collect.jl supports [`Query`s](https://github.com/davidagold/StructuredQueries.jl/) against Julia [`DataFrame`s](https://github.com/JuliaStats/DataFrames.jl).
+Collect.jl supports [queries](https://github.com/davidagold/StructuredQueries.jl/) against Julia [`DataFrame`s](https://github.com/JuliaStats/DataFrames.jl).
+
 
 ## Manual Outline
 
@@ -15,22 +16,21 @@ Pages = [
     "man/grouped.md",
     "man/examples.md",
     "man/verbs1.md",
-    "man/verbs2.md"
 ]
 Depth = 1
 ```
 
-## Library Outline
+<!-- ## Library Outline
 
 ```@contents
 Pages = [
     "lib/public.md",
     "lib/internals.md"  
 ]
-```
+``` -->
 
-### [Index](@id main-index)
+<!-- ### [Index](@id main-index)
 
 ```@index
 Pages = ["lib/public.md"]
-```
+``` -->

@@ -19,3 +19,12 @@ indices).
     res.args = els
     return res
 end
+
+@generated function pushrow!{C}(cols::C, i)
+    n = length(C.parameters)
+
+    return quote
+        attrs = fieldnames(i)
+        @nexprs $n j->push!(cols[j], getfield(i, attrs[j]))
+    end
+end
